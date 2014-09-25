@@ -9,3 +9,5 @@ https://github.com/andyzee/jquery-resizable-rotation-patch/blob/master/resizable
 You can search for "patch:" comments for modifications, you can then port this to your current version easily
 
 This patch is based on version *jquery-ui-1.10.3*
+
+_Live JSFiddle Demo: http://jsfiddle.net/unloco/ors6d3xe/_
