@@ -129,9 +129,13 @@ $(document).ready(function(){
 			return false;
 		}
 
+		//patch: cache cosine & sine
+		var _cos = Math.cos(angle_rad);
+		var _sin = Math.sin(angle_rad);
+
 		//patch: calculate the corect mouse offset for a more natural feel
-		ndx = dx * Math.cos(angle_rad) + dy * Math.sin(angle_rad);
-		ndy = dy * Math.cos(angle_rad) - dx * Math.sin(angle_rad);
+		ndx = dx * _cos + dy * _sin;
+		ndy = dy * _cos - dx * _sin;
 		dx = ndx;
 		dy = ndy;
 
@@ -162,8 +166,8 @@ $(document).ready(function(){
 
 		//patch: calculate the correct position offset based on angle
 		var new_data = {};
-		new_data.left = diffData.left * Math.cos(angle_rad) - diffData.top  * Math.sin(angle_rad);
-		new_data.top  = diffData.top  * Math.cos(angle_rad) + diffData.left * Math.sin(angle_rad);
+		new_data.left = diffData.left * _cos - diffData.top  * _sin;
+		new_data.top  = diffData.top  * _cos + diffData.left * _sin;
 
 		//patch: round the values
 		new_data.left = _round(new_data.left);
