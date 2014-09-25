@@ -4,10 +4,6 @@ $(document).ready(function(){
 		return parseInt(e, 10) || 0
 	}
 
-	function r(e) {
-		return !isNaN(parseInt(e, 10))
-	}
-
 	//patch: totally based on andyzee work here, thank you
 	//patch: https://github.com/andyzee/jquery-resizable-rotation-patch/blob/master/resizable-rotation.patch.js
 	//patch: search for "patch:" comments for modifications
@@ -49,7 +45,6 @@ $(document).ready(function(){
 		return offset;
 	}
 
-
 	$.ui.resizable.prototype._mouseStart = function(event) {
 
 		var curleft, curtop, cursor,
@@ -60,8 +55,8 @@ $(document).ready(function(){
 
 		this._renderProxy();
 
-		curleft = this._num(this.helper.css("left"));
-		curtop = this._num(this.helper.css("top"));
+		curleft = n(this.helper.css("left"));
+		curtop = n(this.helper.css("top"));
 
 		if (o.containment) {
 			curleft += $(o.containment).scrollLeft() || 0;
