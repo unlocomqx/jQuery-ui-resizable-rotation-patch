@@ -45,6 +45,30 @@ $(document).ready(function(){
 		return offset;
 	}
 
+	$.ui.resizable.prototype._updateRatio = function( data, event ) {
+		
+		var cpos = this.lastData,
+			csize = this.size,
+			a = this.axis;
+
+		if (isNumber(data.height)) {
+			data.width = (data.height * this.aspectRatio);
+		} else if (isNumber(data.width)) {
+			data.height = (data.width / this.aspectRatio);
+		}
+
+		if (a === "sw") {
+			data.left = cpos.left + (csize.width - data.width);
+			data.top = cpos.top;
+		}
+		if (a === "nw") {
+			data.top = cpos.top + (csize.height - data.height);
+			data.left = cpos.left + (csize.width - data.width);
+		}
+
+		return data;
+	};
+
 	$.ui.resizable.prototype._mouseStart = function(event) {
 
 		var curleft, curtop, cursor,
