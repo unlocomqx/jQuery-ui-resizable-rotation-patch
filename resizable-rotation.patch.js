@@ -4,6 +4,10 @@ $(document).ready(function(){
 		return parseInt(e, 10) || 0
 	}
 
+	function isNumber(value) {
+		return !isNaN(parseInt(value, 10));
+	}
+
 	//patch: totally based on andyzee work here, thank you
 	//patch: https://github.com/andyzee/jquery-resizable-rotation-patch/blob/master/resizable-rotation.patch.js
 	//patch: search for "patch:" comments for modifications
@@ -44,6 +48,30 @@ $(document).ready(function(){
 		var offset = {left: diff2.left - diff1.left, top: diff2.top - diff1.top};
 		return offset;
 	}
+
+	$.ui.resizable.prototype._updateRatio = function( data, event ) {
+		
+		var cpos = this.lastData,
+			csize = this.size,
+			a = this.axis;
+
+		if (isNumber(data.height)) {
+			data.width = (data.height * this.aspectRatio);
+		} else if (isNumber(data.width)) {
+			data.height = (data.width / this.aspectRatio);
+		}
+
+		if (a === "sw") {
+			data.left = cpos.left + (csize.width - data.width);
+			data.top = cpos.top;
+		}
+		if (a === "nw") {
+			data.top = cpos.top + (csize.height - data.height);
+			data.left = cpos.left + (csize.width - data.width);
+		}
+
+		return data;
+	};
 
 	$.ui.resizable.prototype._mouseStart = function(event) {
 
