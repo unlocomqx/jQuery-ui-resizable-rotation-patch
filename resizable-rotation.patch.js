@@ -4,6 +4,10 @@ $(document).ready(function(){
 		return parseInt(e, 10) || 0
 	}
 
+	function isNumber(value) {
+		return !isNaN(parseInt(value, 10));
+	}
+
 	//patch: totally based on andyzee work here, thank you
 	//patch: https://github.com/andyzee/jquery-resizable-rotation-patch/blob/master/resizable-rotation.patch.js
 	//patch: search for "patch:" comments for modifications
