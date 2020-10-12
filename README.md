@@ -11,4 +11,4 @@ You can search for "patch:" comments for modifications, you can then port this t
 This patch is based on version *jquery-ui-1.10.3*
 
 DEMO
-Live JSFiddle DEMO: http://jsfiddle.net/unloco/ors6d3xe/
+Live JSFiddle DEMO: http://jsfiddle.net/unloco/ors6d3xe/169/
